@@ -1,23 +1,20 @@
-import logo from './logo.svg';
 import './App.css';
-
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
+import ShopContainer from './containers/ShopContainer';
+import { useEffect } from 'react';
+import { addAccessToken } from './utills/localStorage';
 function App() {
+  const token =
+    process.env.TOKEN || 'VPmo2U661gTnhMVx0pc0-CtahNg_aqS5DuneLtYfO1o';
+  useEffect(() => {
+    addAccessToken(token);
+  }, []);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ShopContainer />
     </div>
   );
 }
